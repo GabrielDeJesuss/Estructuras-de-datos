@@ -9,7 +9,7 @@ namespace Clase210822_2
 {
     internal class Program
     {
-        //ejercicio static void 👀
+        //ejercicio procedimiento static void 👀
         static void ImprimirCabecera(string nombreMateria, int grupo, string nombre)
         {
             Console.WriteLine("==============================================");
