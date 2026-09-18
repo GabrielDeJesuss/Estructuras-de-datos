@@ -13,6 +13,14 @@ namespace vectores
             int[] numeros = new int[5]
                 {25, 43, 80, 12, 14};
             Console.WriteLine($"Elemento en [0]: {numeros[0]}");
+
+            string[] estudiantes =
+            {"Pepe","Jose","Carlos","Maria"};
+
+            for (int i = 0; i < estudiantes.Length; i++)
+            {
+                Console.WriteLine($"Indice [{i}]: {estudiantes[i]}");
+            }
         }
     }
 }
