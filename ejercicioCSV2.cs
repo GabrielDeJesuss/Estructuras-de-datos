@@ -21,7 +21,7 @@ namespace lecturaDeArchivo
                     Console.WriteLine($"Nombre: {campos[0]}, Nota: {campos[2]}");
                 }
             }
-            using (StreamWriter sw = new StreamWriter("informacion_estudiantes.csv", append: true))
+            using (StreamWriter sw = new StreamWriter("C:\\Users\\Sala-1\\Desktop\\archivos\\informacion_estudiantes.csv", append: true))
             {
                 sw.WriteLine("Juanito, 22, 65, 3ro");
             }
