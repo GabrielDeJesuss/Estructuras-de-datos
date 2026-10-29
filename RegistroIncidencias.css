@@ -26,7 +26,7 @@ internal class Program
             {
                 foreach (string[] incidencia in incidencias)
                 {
-                    sw.WriteLine(incidencia);
+                    sw.WriteLine(string.Join(";", incidencia));
                 }
             }
         }
@@ -42,7 +42,7 @@ internal class Program
 
         if (!File.Exists(pathFile))
         {
-            Console.WriteLine("El archivo no existe aún"());
+            Console.WriteLine("El archivo no existe aún");
             return incidencias;
         }
         try
@@ -54,8 +54,8 @@ internal class Program
                 {
                     if (!string.IsNullOrWhiteSpace(linea))
                     {
-                        string[] lines = linea.Split(';');
-                        incidencias.Add(campos);
+                        string[] lineas = linea.Split(';');
+                        incidencias.Add(lineas);
                     }
                 }
             }
@@ -64,7 +64,7 @@ internal class Program
         {
             Console.WriteLine($"Error al leer el archivo {error.Message}");
         }
-
+        return incidencias;
     } //paso 2
 
     static void GenerarReporte(List<string[]> incidencias)
@@ -78,7 +78,7 @@ internal class Program
 
         foreach (string[] inc in incidencias)
         {
-            if (inc.lenght < 4) continue;
+            if (inc.Length < 4) continue;
             string prioridad = inc[3];
             //inc['01';'Gabriel Medina';'Daño de PC';'Alta']
             if (conteoPorPrioridad.ContainsKey(prioridad))
@@ -93,38 +93,8 @@ internal class Program
             Console.WriteLine("\n REPORTE DE INCIDENCIAS");
             Console.WriteLine($"Total Atendidas: {incidencias.Count}");
             Console.WriteLine("Detalles por prioridad");
-            foreach (var inc in conteoPorPrioridad)
-                Console.WriteLine($"\nPrioridad: {inc.key}: {inc.Value}");
-        }
-        static void GenerarReporte(List<string[]> incidencias)
-        {
-            if (incidencias.Count == 0)
-            {
-                Console.WriteLine("No hay incidencias para reportar");
-                return;
-            }
-            Dictionary<string, int> conteoPorPrioridad = new Dictionary<string, int>();
-
-            foreach (string[] inc in incidencias)
-            {
-                if (inc.lenght < 4) continue;
-                string prioridad = inc[3];
-                //inc['01';'Gabriel Medina';'Daño de PC';'Alta']
-                if (conteoPorPrioridad.ContainsKey(prioridad))
-                {
-                    conteoPorPrioridad[prioridad]++;
-                }
-                else
-                {
-                    conteoPorPrioridad[prioridad] = 1;
-                }
-
-                Console.WriteLine("\n REPORTE DE INCIDENCIAS");
-                Console.WriteLine($"Total Atendidas: {incidencias.Count}");
-                Console.WriteLine("Detalles por prioridad");
-                foreach (var inc in conteoPorPrioridad)
-                    Console.WriteLine($"\nPrioridad: {inc.key}: {inc.Value}");
-            }
+            foreach (var item in conteoPorPrioridad)
+                Console.WriteLine($"\nPrioridad: {item.Key}: {item.Value}");
         }
     } //paso 3
 
@@ -150,7 +120,7 @@ internal class Program
 
         foreach (string[] inc in incidenciasLeidas)
         {
-            if (inc.Length > 4) continue;
+            if (inc.Length < 4) continue;
             Console.WriteLine($"{inc[0],-4} {inc[1],-15} {inc[2],-20} {inc[3],-10}");
         }
 
