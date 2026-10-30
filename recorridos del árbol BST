@@ -1,0 +1,5 @@
+Recorrido          Resultado
+
+Preorden    45, 23, 12, 34, 67, 56, 89
+Inorden     12, 23, 34, 45, 56, 67, 89
+Posorden    12, 34, 23, 56, 89, 67, 45
